@@ -702,12 +702,12 @@ body {
 <div class="clearfix" style="position: relative">
 	<br>
 	<div class="halfWidth" style="float: right;"><span class="boldLabel">Compétences du PFEQ visées à ce cycle:</span><br>
-		<input type="search" id="filterCompetencies" class="hidden" placeholder="<recherche>" oninput="filterSide(competencyTag)">
+		<input type="search" id="filterCompetencies" class="hidden" placeholder="<filtrer>" oninput="filterSide(competencyTag)">
 		<label id="showActivities" class="hidden"><input type="checkbox" checked onchange="showElements(activityTag)">Montrer les activités liées</label>
 		<div id="right" onclick="competencyActivityClick()"></div>
 	</div>
 	<div class="halfWidth"><span class="boldLabel">Activités:</span><br>
-		<input type="search" id="filterActivities" class="hidden" placeholder="<recherche>" oninput="filterSide(activityTag)">
+		<input type="search" id="filterActivities" class="hidden" placeholder="<filtrer>" oninput="filterSide(activityTag)">
 		<label id="showCompetencies" class="hidden"><input type="checkbox" checked onchange="showElements(competencyTag)">Montrer les compétences liées</label>
 		<div id="left" onchange="recalculateAttainedCompetencies()"></div>
 	</div>
