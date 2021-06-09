@@ -1,0 +1,1053 @@
+<html>
+<script>
+//\t
+//","
+//regex: ^(.+)$
+//replace with: ["$1"],
+var activityList = [
+["lectureAvecQuestions","Lecture de textes suivie de questions de compréhension - incluant des inférences","x","x","x","x","x"],
+["lectureAHauteVoix","Lecture à haute voix pour la fluidité","x","x","x","x","x"],
+["lectureRomanEtResumer","Lecture d’un roman et résumer certains chapitres","x","x","x","x","x"],
+["lecturePartageeAvecQuestions","Lecture partagée à haute voix ponctuée de questions pour s’assurer de la compréhension de l’enfant - et parfois sans question, pour le plaisir de lire","x","x","x","x","x"],
+["lireActualiteEtDiscuter","Lire sur l’actualité et discuter des enjeux","x","x","x","x","x"],
+["confectionLivreGeantAvecLecture","Confection avec le parent de livres géants et lecture fréquente de ces livres en suivant avec le doigt","x","","","",""],
+["methodeLecture","Utilisation d’une méthode reconnue pour l’apprentissage de la lecture","x","","","",""],
+["lectureDeRecherche","Lecture d’ouvrages et de sites internet - bien sélectionnés en vue de réaliser un projet de recherche sur un sujet qui passionne l’enfant - dégager et noter les informations pertinentes","x","x","x","x","x"],
+["clubDeLecture","Participer à un club de lecture - raconter l’histoire dans ses mots et donner son appréciation à l’aide de justifications","x","x","x","x","x"],
+["lireChansonEtChanter","Lire les paroles et chanter des chansons","x","x","x","x","x"],
+["lectureAUnPlusJeune","Faire la lecture à un enfant plus jeune","x","x","x","x","x"],
+["correspondance","Correspondance par la poste ou par courriel","x","x","x","x","x"],
+["strategiesDeLecture","Activités pour enseigner et mettre en pratique les différentes stratégies de lecture","x","x","x","x","x"],
+["enregistrerLectureAlbum","Enregistrement de la lecture d’un album","x","x","x","x","x"],
+["livreAudio","Écoute de livres audio","x","x","x","x","x"],
+["jouerTheatre","Jouer une pièce de théâtre","x","x","x","x","x"],
+["recitalPoesie","Organiser un récital de poésie","x","x","x","x","x"],
+["dessinDUneHistoireLue","Dessiner de manière détaillée une scène se déroulant dans une histoire lue","x","x","x","x","x"],
+["lecturebanqueDeMots","Lire des banques de mots pour tenter d’en retenir l’orthographe","x","x","x","x","x"],
+["journalDuLecteur","Tenir un journal du lecteur - coups de coeur, résumés et critiques","x","x","x","x","x"],
+["lectureVieDeTousLesJours","Lire à haute voix dans la vie de tous les jours - publicités, boîtes de céréales, ingrédients, marche à suivre d’une recette, etc.","x","x","x","x","x"],
+["recetteLue","Effectuer une recette lue","x","x","x","x","x"],
+["jeuxlectureEtComprehension","Jouer à un jeu pour apprendre à lire et améliorer sa compréhension","x","x","x","x","x"],
+["magazineEducatifEtActivites","Abonnement à des magazines éducatifs et en exploiter les activités et les textes proposés","x","x","x","x","x"],
+["ecrireConteAlbum","Écrire un conte, confectionner un album pour un enfant plus jeune","x","x","x","x","x"],
+["ecrireRecit3Temps","Écrire un récit en trois temps","x","","","",""],
+["ecrireRecit5Temps","Écrire un récit en en cinq temps","","x","x","x","x"],
+["ecrireSemblant","Jouer à faire semblant d’écrire","x","","","",""],
+["ecrireRoman","Écriture d’un roman","x","x","x","x","x"],
+["ecrireSuiteHistoire","Écrire la suite d’une histoire incomplète","x","x","x","x","x"],
+["ecrireJournalIntime","Alimenter un journal intime","x","x","x","x","x"],
+["ecrireRecette","Inventer des recettes","x","x","x","x","x"],
+["ecrireUnAbecedaire","Confectionner un abécédaire","x","x","x","x","x"],
+["ecrireDictio","Confectionner son propre dictionnaire des mots nouvellement appris","x","x","x","x","x"],
+["ecrireChanson","Écrire des chansons","x","x","x","x","x"],
+["ecrireBD","Créer une bande dessinée","x","x","x","x","x"],
+["ecrireTheatre","Écrire une pièce de théâtre","x","x","x","x","x"],
+["projetRecherche","Projet de recherche sur un sujet qui passionne l’enfant","x","x","x","x","x"],
+["utilisationOutilAutocorrection","Utilisation d’un code d’auto-correction - outil","x","x","x","x","x"],
+["utilisationDictio","Utilisation d’un dictionnaire - outil","x","x","x","x","x"],
+["utilisationGuideConjugaison","Utilisation d’un guide de conjugaison - outil","x","x","x","x","x"],
+["utilisationGrammaire","Utilisation d’une grammaire - outil","x","x","x","x","x"],
+["ecrireDictee","Dictées","x","x","x","x","x"],
+["exerciceGrammaire","Exercices de grammaire","x","x","x","x","x"],
+["ecrireQuestionsPourEntrevue","Composer les questions d’une entrevue à réaliser","x","x","x","x","x"],
+["ecritureLibre","S’exprimer dans un carnet d’écriture libre","x","x","x","x","x"],
+["fabriquerJeuxSocieteEtRegle","Fabriquer un jeu de société - en écrire les règles également","x","x","x","x","x"],
+["ecritureCollaborative","Écriture collaborative","x","x","x","x","x"],
+["ecrireListes","Écrire des listes - épicerie, liste de choses à faire, etc","x","x","x","x","x"],
+["ecrireReve","Raconter un rêve par écrit","x","x","x","x","x"],
+["ecrireBlogue","Tenir un blogue","x","x","x","x","x"],
+["ecrireFilmOuDocumentaire","Écrire un film ou un documentaire","x","x","x","x","x"],
+["ecrireMarcheASuivreOuFonctionnement","Expliquer une marche à suivre ou le fonctionnement d’un objet","x","x","x","x","x"],
+["decrireinventionImaginaire","Décrire une invention qui sort de l’imaginaire de l’enfant","x","x","x","x","x"],
+["ecrireAUnAuteur","Écrire une lettre à son auteur favori","x","x","x","x","x"],
+["powerpoint","Présenter le résultat d’une recherche dans un PowerPoint","x","x","x","x","x"],
+["enregistrerBulletinNouvelle","Créer et enregistrer un bulletin de nouvelle télévisé ou radiophonique","x","x","x","x","x"],
+["oralRecherchePowerpoint","Présenter le résultat d’une recherche - PowerPoint, affiche","x","x","x","x","x"],
+["podcast","Podcast","x","x","x","x","x"],
+["debat","Exprimer son point de vue lors d’un débat","x","x","x","x","x"],
+["discussion","Discussion autour d’un sujet donné","x","x","x","x","x"],
+["expliquerJeu","Expliquer les règles d’un jeu","x","x","x","x","x"],
+["realiserEntrevue","Réaliser une entrevue","x","x","x","x","x"],
+["raconterReve","Raconter un rêve fait durant la nuit","x","x","x","x","x"],
+["realiserFilm","Réaliser un film ou un documentaire amateur","x","x","x","x","x"],
+["improvisation","Organiser des joutes d’improvisation en famille","x","x","x","x","x"],
+["raconterDesHistoires","Se raconter des histoires tout juste inventées","x","x","x","x","x"],
+["angEcouterChansonEtEnDiscuter","Anglais - Écouter des chansons, des comptines et des histoires - contenant des passages répétitifs - pour ensuite en discuter et exploiter leur contenu","x","","","",""],
+["angChantEtGestes","Anglais - Interpréter les chansons et les comptines avec des gestes appropriés","x","","","",""],
+["angTransformationHistoire","Anglais - Transformation des histoires par l’enfant en ajoutant des éléments linguistiques connus","x","","","",""],
+["angRepetitionMots","Anglais - Répétition de mots et d’expressions à l’oral","x","","","",""],
+["angTeleEtQuestion","Anglais - Écoute de films ou émissions de télévision et retour sur la compréhension","x","","","",""],
+["angPoserQuestionsApresLecture","Anglais - À l’oral, poser des questions de compréhension à l’enfant suite à la lecture d’une histoire","x","","","",""],
+["angRedireDansSesMots","Anglais - Redire une histoire dans ses mots","x","","","",""],
+["angMimerHistoireEntendue","Anglais - Mimer une histoire entendue","x","","","",""],
+["angLectureDeCompte","Anglais - La lecture du conte du soir en anglais","x","","","",""],
+["angDessinDeTexteEntendu","Anglais - Dessin qui démontre la compréhension du texte entendu","x","","","",""],
+["angChansonEnJouant","Anglais - Chansons pour accompagner les jeux de ballons, jeux de mains","x","","","",""],
+["angRaconter","Anglais - Tenter de raconter une histoire connue à l’aide des illustrations","x","x","x","x","x"],
+["angUniquementAuRepas","Anglais - Des repas hebdomadaires qui se déroulent uniquement en anglais","x","x","x","x","x"],
+["angDescriptions","Anglais - Description de personnes ou d’objets","x","x","x","x","x"],
+["angDemanderAideOuPermission","Anglais - Demander une permission, offrir son aide","x","x","x","x","x"],
+["angVieCourante","Anglais - Utilisation d’expressions dans la vie de tous les jours","x","x","x","x","x"],
+["angOrdi","Anglais - Utilisation de sites internet ou applications interactives pour pratiquer l’anglais parlé","x","x","x","x","x"],
+["angJeuxQuestionsReponse","Anglais - Jeu de questions-réponses","x","x","x","x","x"],
+["angJeuxSociete","Anglais - Jouer à des jeux de société en anglais","x","x","x","x","x"],
+["angEnregistrerBulletinNouvelle","Anglais - Créer et enregistrer un bulletin de nouvelle télévisé ou radiophonique","x","x","x","x","x"],
+["angRecitalPoesie","Anglais - Récital de poésie","x","x","x","x","x"],
+["angJouerTheatre","Anglais - Jouer une pièce de théâtre","x","x","x","x","x"],
+["angoralRecherchePowerpoint","Anglais - Présenter le résultat d’une recherche - PowerPoint, affiche","x","x","x","x","x"],
+["angPodcast","Anglais - Podcast","x","x","x","x","x"],
+["angDebat","Anglais - Exprimer son point de vue lors d’un débat","x","x","x","x","x"],
+["angDiscussion","Anglais - Discussion autour d’un sujet donné","x","x","x","x","x"],
+["angExpliquerJeu","Anglais - Expliquer les règles d’un jeu","x","x","x","x","x"],
+["angRealiserEntrevue","Anglais - Réaliser une entrevue","x","x","x","x","x"],
+["angRaconterReve","Anglais - Raconter un rêve fait durant la nuit","x","x","x","x","x"],
+["angRealiserFilm","Anglais - Réaliser un film ou un documentaire amateur","x","x","x","x","x"],
+["angImprovisation","Anglais - Organiser des joutes d’improvisation en famille","x","x","x","x","x"],
+["angRaconterDesHistoires","Anglais - Se raconter des histoires tout juste inventées","x","x","x","x","x"],
+["anglectureAvecQuestions","Anglais - Lecture de textes suivie de questions de compréhension - incluant des inférences","","x","x","x","x"],
+["angLectureAHauteVoix","Anglais - Lecture à haute voix pour la fluidité","","x","x","x","x"],
+["angLectureRomanEtResumer","Anglais - Lecture d’un roman et résumer certains chapitres","","x","x","x","x"],
+["anglecturePartageeAvecQuestions","Anglais - Lecture partagée à haute voix ponctuée de questions pour s’assurer de la compréhension de l’enfant - et parfois sans question, pour le plaisir de lire","","x","x","x","x"],
+["angLireActualiteEtDiscuter","Anglais - Lire sur l’actualité et discuter des enjeux","","x","x","x","x"],
+["angLectureDeRecherche","Anglais - Lecture d’ouvrages et de sites internet - bien sélectionnés en vue de réaliser un projet de recherche sur un sujet qui passionne l’enfant - dégager et noter les informations pertinentes","","x","x","x","x"],
+["angClubDeLecture","Anglais - Participer à un club de lecture - raconter l’histoire dans ses mots et donner son appréciation à l’aide de justifications","","x","x","x","x"],
+["angLireChansonEtChanter","Anglais - Lire les paroles et chanter des chansons","","x","x","x","x"],
+["angLectureAUnPlusJeune","Anglais - Faire la lecture à un enfant plus jeune","","x","x","x","x"],
+["angCorrespondance","Anglais - Correspondance par la poste ou par courriel","","x","x","x","x"],
+["angenregistrerLectureAlbum","Anglais - Enregistrement de la lecture d’un album","","x","x","x","x"],
+["angLivreAudio","Anglais - Écoute de livres audio","","x","x","x","x"],
+["angDessinDUneHistoireLue","Anglais - Dessiner de manière détaillée une scène se déroulant dans une histoire lue","","x","x","x","x"],
+["angLecturebanqueDeMots","Anglais - Lire des banques de mots pour tenter d’en retenir l’orthographe","","x","x","x","x"],
+["angJournalDuLecteur","Anglais - Tenir un journal du lecteur - coups de coeur, résumés et critiques","","x","x","x","x"],
+["anglectureVieDeTousLesJours","Anglais - Lire à haute voix dans la vie de tous les jours - publicités, boîtes de céréales, ingrédients, marche à suivre d’une recette, etc.","","x","x","x","x"],
+["angRecetteLue","Anglais - Effectuer une recette lue","","x","x","x","x"],
+["angJeuxlectureEtComprehension","Anglais - Il existe un grand éventail de jeux pour apprendre à lire et améliorer sa compréhension","","x","x","x","x"],
+["angMagazineEducatifEtActivites","Anglais - Abonnement à des magazines éducatifs et en exploiter les activités et les textes proposés","","x","x","x","x"],
+["angEcrireConteAlbum","Anglais - Écrire un conte, confectionner un album pour un enfant plus jeune","","x","x","x","x"],
+["EangcrireRoman","Anglais - Écriture d’un roman","","x","x","x","x"],
+["angEcrireSuiteHistoire","Anglais - Écrire la suite d’une histoire incomplète","","x","x","x","x"],
+["angEcrireJournalIntime","Anglais - Alimenter un journal intime","","x","x","x","x"],
+["angEcrireRecette","Anglais - Inventer des recettes","","x","x","x","x"],
+["angEcrireUnAbecedaire","Anglais - Confectionner un abécédaire","","x","x","x","x"],
+["angEcrireDictio","Anglais - Confectionner son propre dictionnaire des mots nouvellement appris","","x","x","x","x"],
+["angEcrireChanson","Anglais - Écrire des chansons","","x","x","x","x"],
+["angEcrireBD","Anglais - Créer une bande dessinée","","x","x","x","x"],
+["angEcrireTheatre","Anglais - Écrire une pièce de théâtre","","x","x","x","x"],
+["angProjetRecherche","Anglais - Projet de recherche sur un sujet qui passionne l’enfant","","x","x","x","x"],
+["angUtilisationOutilAutocorrection","Anglais - Utilisation d’un code d’auto-correction - outil","","x","x","x","x"],
+["angUtilisationDictio","Anglais - Utilisation d’un dictionnaire - outil","","x","x","x","x"],
+["angUtilisationGuideConjugaison","Anglais - Utilisation d’un guide de conjugaison - outil","","x","x","x","x"],
+["angUtilisationGrammaire","Anglais - Utilisation d’une grammaire - outil","","x","x","x","x"],
+["angEcrireDictee","Anglais - Dictées","","x","x","x","x"],
+["angExerciceGrammaire","Anglais - Exercices de grammaire","","x","x","x","x"],
+["angEcrireQuestionsPourEntrevue","Anglais - Composer les questions d’une entrevue à réaliser","","x","x","x","x"],
+["angEcritureLibre","Anglais - S’exprimer dans un carnet d’écriture libre","","x","x","x","x"],
+["angFabriquerJeuxSocieteEtRegle","Anglais - Fabriquer un jeu de société - en écrire les règles également","","x","x","x","x"],
+["angEcritureCollaborative","Anglais - Écriture collaborative","","x","x","x","x"],
+["angEcrireListes","Anglais - Écrire des listes - épicerie, liste de choses à faire, etc","","x","x","x","x"],
+["angEcrireReve","Anglais - Raconter un rêve par écrit","","x","x","x","x"],
+["angEcrireBlogue","Anglais - Tenir un blogue","","x","x","x","x"],
+["angEcrireFilmOuDocumentaire","Anglais - Écrire un film ou un documentaire","","x","x","x","x"],
+["angEcrireMarcheASuivreOuFonctionnement","Anglais - Expliquer une marche à suivre ou le fonctionnement d’un objet","","x","x","x","x"],
+["angDecrireinventionImaginaire","Anglais - Décrire une invention qui sort de l’imaginaire de l’enfant","","x","x","x","x"],
+["angEcrireAUnAuteur","Anglais - Écrire une lettre à son auteur favori","","x","x","x","x"],
+["angPowerpoint","Anglais - Présenter le résultat d’une recherche dans un PowerPoint","","x","x","x","x"],
+["mathProblemeEcrit","Mathématique - Résoudre des problèmes écrits en appliquant une méthode de résolution de problèmes et en laissant des traces claires de sa démarche","x","x","x","x","x"],
+["mathProblemeAnime","Mathématique - Résolutions de problèmes animées, guidées - modélisation","x","x","x","x","x"],
+["situationApprentissageEtEvaluation","Mathématique - Résoudre des SAÉ - situations d’apprentissage et d’évaluation","x","x","x","x","x"],
+["projetReno","Préparer un projet de rénovation - budget, mesure de dimensions, etc.","x","x","x","x","x"],
+["fabricationAvecMesure","Fabrication d’objets utilitaires ou décoratifs nécessitant la prise de mesures","x","x","x","x","x"],
+["questionnerRaisonnementMath","Mathématique - Questionner l’enfant pour qu’il explique son raisonnement","x","x","x","x","x"],
+["discuterSolutionsPossibles","Mathématique - Discussion à propos des différentes solutions possibles","x","x","x","x","x"],
+["elaborerRealisation","Mathématique - Élaborer les étapes de réalisations avec l’enfant","x","x","x","x","x"],
+["mathVaria","Présenter à l’enfant des problèmes qui touchent plusieurs contenus d’apprentissage","x","x","x","x","x"],
+["bricolageGeometrieMesure","Confection d’un bricolage avec des consignes précises en lien avec la géométrie et la mesure","x","x","x","x","x"],
+["planJardin","Planification et dessins d’un plan du jardin","x","x","x","x","x"],
+["calculsEvenements","Calculs structurés pour des événements - fêtes, achats, etc.","x","x","x","x","x"],
+["dessinFonctionMathematiques","Dessiner des montagnes russes en utilisant les fonctions mathématiques","","","","x","x"],
+["dessinPlanMaisonPerimetreAire","Dessiner le plan de la maison en calculant le périmètre et l’aire des pièces","x","x","x","x","x"],
+["materiauxCoutsNouvelleChambre","Prévoir les matériaux nécessaires et calculer le coût de la nouvelle chambre","x","x","x","x","x"],
+["budgetAnimal","Planifier le budget annuel pour prendre soin d’un animal","x","x","x","x","x"],
+["mathExercices","Réaliser des exercices sur des notions mathématiques à l’aide de cahiers, de manuels, de sites internet ou d’applications","x","x","x","x","x"],
+["mathEnseignement","Mathématique - Enseignement explicite des notions et mise en pratique à l’aide d’exercices","x","x","x","x","x"],
+["mathManipulation","Utilisation de matériel de manipulation","x","x","x","x","x"],
+["multiplierRecette","Ajuster les quantités d’une recette doublée, triplée, etc","x","x","x","x","x"],
+["mathLexique","Mathématique - Élaboration d’un lexique personnel","x","x","x","x","x"],
+["mathResumer","Coucher sur papier la compréhension des notions que l’on trouve plus difficiles","x","x","x","x","x"],
+["mathDeterminerOperationReponse","Choisir la (les) bonne(s) opération(s) et trouver la réponse à un petit problème raisonné (2 à 3 phrases)","x","x","x","x","x"],
+["mathRepresenterParDessin","Dessiner la représentation de ce qui est compris d’un petit problème raisonné","x","x","x","x","x"],
+["diagrammeSondage","Présentation des résultats d’un sondage réalisé par l’enfant à l’aide d’un diagramme","x","x","x","x","x"],
+["mathCodage","Mathématique - Activité de codage","x","x","x","x","x"],
+["mathMaquette","Construction d’une maquette à l’aide de solides","x","x","x","x","x"],
+["mathJeux","Jeux de hasard et de probabilités","x","x","x","x","x"],
+["mathDeco","Fabrication de décorations à l’aide de frises et de dallages","x","x","x","x","x"],
+["experienceScience1erCycle","Expériences scientifiques en lien avec les savoirs essentiels du 1er cycle; Nommez certaines des connaissances que vous prévoyez aborder par le biais de ces expériences (Voir PFEQ, p. 149)","x","","","",""],
+["maquetteTerreLune","Fabrication d’une maquette Terre-Lune-Soleil","x","","","",""],
+["desinEau","Dessiner les formes que peut prendre l’eau - nuages, pluie, rivière, etc.","x","","","",""],
+["fairePainBeurre","Fabrication de pain, de beurre","x","","","",""],
+["faireJeuQuesionReponse","Fabrication d’un jeu questions-réponses","x","","","",""],
+["jardinage","S’occuper d’un jardin, faire pousser des légumes, des plantes, dessiner la germination","","","","",""],
+["bricolageAnimal","Confectionner une maquette, un collage, un bricolage sur un animal","x","","","",""],
+["theatreombre","Organiser un théâtre d’ombres","x","","","",""],
+["calendrierMeteo","Tenir un calendrier de météo","x","","","",""],
+["cuisiner","Faire la cuisine - substances miscibles/non miscibles, solubles/non solubles","x","","","",""],
+["jeuxClassification","Jeux de classification d’objets - forme, taille, couleur, texture, odeur","x","","","",""],
+["jeuxScienceEducatifs","Jeux éducatifs","x","","","",""],
+["experienceAutresCycles","Expériences scientifiques en lien avec les savoirs essentiels; Nommez certaines des connaissances que vous prévoyez aborder par le biais de ces expériences (Voir la progression des apprentissages du PFEQ)","","x","x","x","x"],
+["rapportExperience","Réalisation d’un rapport d’expérience - démarche scientifique, protocole de laboratoire","","x","x","x","x"],
+["faireMachineSimple","Fabrication de machines simples à l’aide d’outils","","x","x","x","x"],
+["fairePlaneur","Organiser un concours de planeurs fabriqués par l’enfant","","x","x","x","x"],
+["pontSolideTourHaute","Défi du pont le plus solide ou de la tour la plus haute","","x","x","x","x"],
+["programmationOuRobotique","Programmation / robotique","","x","x","x","x"],
+["maquetteAvecOutils","Maquette - à l’aide d’outils","","x","x","x","x"],
+["microscopeInsectes","Observation d’insectes au microscope","","x","x","x","x"],
+["fairePrototypeEtVerification","Construction d’un prototype et vérification - photos, vidéo","","x","x","x","x"],
+["recetteDemonstrationChangementChimique","Faire une recette et démontrer que des changements chimiques modifient les propriétés de la matière","","x","x","x","x"],
+["faireCircuitElectrique","Fabrication d’un objet et le faire fonctionner à l’aide d’un circuit électrique","","x","x","x","x"],
+["sciTechNommerConnaissance","Sci-Tech - Pour certaines activités et/ou certains projets, nommez les connaissances que vous prévoyez aborder.","","x","x","x","x"],
+["sciTechDiscussions","Sci-Tech - Discussions","","x","x","x","x"],
+["sciTechRemueMeninges","Sci-Tech - Remue-méninges","","x","x","x","x"],
+["sciTechLectureEtQuestions","Sci-Tech - Lectures suivies d’un questionnement - oral ou écrit","","x","x","x","x"],
+["sciTechProjetRecherche","Sci-Tech - Réalisation d’un projet de recherche suivi d’une présentation","x","x","x","x","x"],
+["sciTechPowerPoint","Sci-Tech - Préparation d’un Power Point ou d’une affiche pour synthétiser les notions apprises ou dans le but de les présenter","","x","x","x","x"],
+["sciTechQuestionnaire","Sci-Tech - Confectionner un jeu questionnaire sur les notions apprises et y faire jouer ses parents","","x","x","x","x"],
+["sciTechDocumentaireEtResume","Sci-Tech - Visionnement de documentaires suivi d’une discussion, d’un questionnement, d’un résumé, d’une synthèse d’informations","","x","x","x","x"],
+["schemaPhenomeneNaturel","Schématiser un phénomène naturel","","x","x","x","x"],
+["sciTechPreparerDocumentaire","Préparer un documentaire scientifique","","x","x","x","x"],
+["sciTechDessinConcept","Sci-Tech - Dessin démontrant la compréhension d’un concept","","x","x","x","x"],
+["sciTechJeuxSociete","Sci-Tech - Jeux de société abordant les notions à connaître","","x","x","x","x"],
+["sciTechAnalyseActualite","Sci-Tech - Analyse d’enjeux d’actualité","","x","x","x","x"],
+["sciTechReseauDeConcept","Sci-Tech - Réseau de concept","","x","x","x","x"],
+["sciTechMaquette","Sci-Tech - Maquette","","x","x","x","x"],
+["dessinCircuit","Sci-Tech - Dessiner un circuit électrique","","x","x","x","x"],
+["resumerObservationsNature","Notes et/ou synthèse suite à des observations dans la nature","","x","x","x","x"],
+["dessinIciEtAilleurs","Dessins représentant des paysages d’ici et d’ailleurs","x","","","",""],
+["dessinNatureVsHumain","Dessins représentant des éléments naturels versus des éléments humains","x","","","",""],
+["correspondanceAvecPaysageEtPhoto","Correspondance et envoi de photographie de paysage","x","","","",""],
+["correspondanceRealiteIcIetAilleurs","Correspondance - description de réalités – vie quotidienne -  d’ici d’ailleurs","x","","","",""],
+["ligneDuTempsRecent","Ligne du temps des faits marquants de l’existence de l’enfant et celle de ses proches","x","","","",""],
+["arbreGenealogique","Arbre généalogique","x","","","",""],
+["histoireDeFamille","Raconter des histoires de famille","x","","","",""],
+["dessinFamilleElargie","Dessiner les membres de sa famille élargie","x","","","",""],
+["discussionSocial1erCycle","Univers Social - Discussions sur différents sujets à aborder – savoir essentiels - PFEQ, p. 168","x","","","",""],
+["participationSociale","Participation active à un groupe social","x","","","",""],
+["regleDeFonctionnementSocial","Élaborer, comprendre, respecter des règles de fonctionnement","x","","","",""],
+["maquetteElementsHumains","Maquette d’éléments construits par les humains","x","","","",""],
+["utiliserCalendrier","Utilisation du calendrier","x","","","",""],
+["calculNombreJoursAvantEvenement","Calculer la durée de jours restants avant un événement","x","","","",""],
+["planCartierSimple","Plan simple ou maquette de son milieu de vie, de son quartier","x","","","",""],
+["dessinEntourageAvecCaracteristiques","Illustration de l’entourage propre faisant ressortir les caractéristiques de chacun","x","","","",""],
+["universSocialNommerConnaissance","Pour certaines activités et/ou certains projets, nommez la société que vous prévoyez étudier ainsi que l’époque ciblée.","","x","x","x","x"],
+["maquetteSociete","Maquette mettant en scène des éléments d’une société","","x","x","x","x"],
+["faireCarteGeographique","Réalisation de cartes géographiques","","x","x","x","x"],
+["universSocialNapperonSynthese","Univers Social - Confectionner un napperon synthèse","","x","x","x","x"],
+["universSocialResumeLivre","Univers Social - Résumé d’un(e) chapitre/thème/section/unité provenant d’un ouvrage/manuel/cahier","","x","x","x","x"],
+["universSocialLectureQuestion","Univers Social - Lecture de textes suivie d’un questionnement écrit","","x","x","x","x"],
+["bdHistorique","Création d’une bande dessinée historique","","x","x","x","x"],
+["powerPointSociete","Création d’une affiche ou d’un PowerPoint pour comparer deux sociétés","","x","x","x","x"],
+["universSocialJeuQuestionnaire","Univers Social - Création d’un jeu questionnaire","","x","x","x","x"],
+["universSocialSchemaConceptuel","Univers Social - Schéma conceptuel","","x","x","x","x"],
+["universSocialVoirDocumentaire","Univers Social - Voir un documentaire et en discuter, en faire un résumé","","x","x","x","x"],
+["ligneDuTemps","Confectionner une ligne du temps","","x","x","x","x"],
+["universSocialEcrireTexteInformatif","Univers Social - Réalisation d’un texte argumentatif ou d’un texte informatif","","x","x","x","x"],
+["universSocialPieceTheatre","Univers Social - Écrire et/ou interpréter une pièce de théâtre","","x","x","x","x"],
+["universSocialTextePersonneEpoque","Écrire un texte dans la peau d’un personnage historique ou un habitant d’une autre époque","","x","x","x","x"],
+["reportageEnjeuTerritoire","Enregistrer un reportage sur un enjeu territorial","","x","x","x","x"],
+["universSocialTableauEnjeux","Univers Social - Tableau-synthèse des enjeux et des solutions","","x","x","x","x"],
+["ecrireAuxDirigeants","Écrire aux dirigeants pour proposer des solutions","","x","x","x","x"],
+["ecrireBiographiePersonnagehistorique","Écrire un texte biographique d’un personnage marquant","","x","x","x","x"],
+["resumeJournalAutreEpoque","Un résumé d’un article de journal écrit dans une autre époque","","x","x","x","x"],
+["universSocialRecherche","Faire une recherche sur un sujet social, historique ou géographique","x","x","x","x","x"],
+["lireMagazineScientifique","Lire un article dans un magazine scientifique","x","x","x","x","x"],
+["lireMagazineUniversSocial","Lire un article dans un magazine qui parle de société, de géographie et d'histoire","x","x","x","x","x"],
+
+
+];
+
+var competenceList = [
+["lireTexteVaries","Français - Lire des textes variés","x","x","x","",""],
+["apprecierOeuvresLitteraires","Français - Apprécier des oeuvres littéraires","x","x","x","",""],
+["lireEtApprecierTexteVaries","Français - Lire et apprécier des textes variés","","","","x","x"],
+["ecrireTexteVaries","Français - Écrire des textes variés","x","x","x","x","x"],
+["communiquerOralement","Français - Communiquer oralement","x","x","x","",""],
+["communiquerOralementVariees","Français - Communiquer oralement selon des modalités variées","","","","x","x"],
+["angMobiliserComprehension","Anglais - Mobiliser sa compréhension de textes entendus","x","","","",""],
+["angCommuniquerOralement","Anglais - Communiquer oralement en anglais","x","","","",""],
+["angInteragirOralement","Anglais - Interagir oralement en anglais","","x","x","x","x"],
+["angReinvestirComprehensionLusEtEntendus","Anglais - Réinvestir sa compréhension de textes lus et entendus","","x","x","",""],
+["angReinvestirComprehensionDesTextes","Anglais - Réinvestir sa compréhension des textes","","","","x","x"],
+["angEcrireTextes","Anglais - Écrire des textes","","x","x","",""],
+["angEcrireProduireTextes","Anglais - Écrire et produire des textes","","","","x","x"],
+["mathResoudreSituationProbleme","Mathématique - Résoudre une situation-problème mathématique","x","x","x","x","x"],
+["mathRaisonnerConcepts","Mathématique - Raisonner à l’aide de concepts et de processus mathématiques","x","x","x","",""],
+["mathDeployerRaisonnement","Mathématique - Déployer un raisonnement mathématique","","","","x","x"],
+["mathCommuniquer","Mathématique - Communiquer à l’aide du langage mathématique","x","x","x","x","x"],
+["explorerScienceTechno","Science et Technologie - Explorer le monde de la science et de la technologie","x","","","",""],
+["sciTechChercherReponses","Science et Technologie - Chercher des réponses ou des solutions à des problèmes d’ordre scientifique ou technologique","","x","x","",""],
+["sciTechProposerExplications","Science et Technologie - Proposer des explications ou des solutions à des problèmes d’ordre scientifique ou technologique","","","","x","x"],
+["sciTechUtiliserOutilsEtProcedes","Science et Technologie - Mettre à profit les outils, les objets et les procédés de la science et de la technologie","","x","x","",""],
+["sciTechUtiliserConnaissances","Science et Technologie - Mettre à profit ses connaissances scientifiques ou technologiques","","","","x","x"],
+["sciTechCommuniquer","Science et Technologie - Communiquer à l’aide des langages utilisés en science et en technologie","","x","x","x","x"],
+["espaceTempsSociete","Univers Social - Construire sa représentation de l’espace, du temps et de la société","x","","","",""],
+["lireOrganisationSocieteTerritoire","Univers Social - Lire l’organisation d’une société sur son territoire","","x","x","",""],
+["interpreterSocieteTerritoire","Univers Social - Interpréter le changement dans une société et sur son territoire","","x","x","",""],
+["diversiteSocieteTerritoire","Univers Social - S’ouvrir à la diversité des sociétés et de leur territoire","","x","x","",""],
+["lireOrganisationTerritoire","Univers Social - Lire l’organisation d’un territoire","","","","x",""],
+["interpreterTerritoire","Univers Social - Interpréter un enjeu territorial","","","","x",""],
+["conscienceCitoyennePlanetaire","Univers Social - Construire sa conscience citoyenne à l’échelle planétaire","","","","x",""],
+["interrogerSocioHistorique","Univers Social - Interroger les réalités sociales dans une perspective historique","","","","x",""],
+["interpreterSocioHistorique","Univers Social - Interpréter les réalités sociales à l’aide de la méthode historique","","","","x",""],
+["conscienceCitoyenneHistoire","Univers Social - Construite sa conscience citoyenne à l’aide de l’histoire","","","","x",""],
+["histoireQuebecCanada","Univers Social - Caractériser une période de l’histoire du Québec et du Canada","","","","","x"],
+["interpreterSociete","Univers Social - Interpréter une réalité sociale","","","","","x"],
+
+
+];
+var linksActivityToCompetencies = [
+["Activité                                    Compétence","lireTexteVaries","apprecierOeuvresLitteraires","lireEtApprecierTexteVaries","ecrireTexteVaries","communiquerOralement","communiquerOralementVariees","angMobiliserComprehension","angCommuniquerOralement","angInteragirOralement","angReinvestirComprehensionLusEtEntendus","angReinvestirComprehensionDesTextes","angEcrireTextes","angEcrireProduireTextes","mathResoudreSituationProbleme","mathRaisonnerConcepts","mathDeployerRaisonnement","mathCommuniquer","explorerScienceTechno","sciTechChercherReponses","sciTechProposerExplications","sciTechUtiliserOutilsEtProcedes","sciTechUtiliserConnaissances","sciTechCommuniquer","espaceTempsSociete","lireOrganisationSocieteTerritoire","interpreterSocieteTerritoire","diversiteSocieteTerritoire","lireOrganisationTerritoire","interpreterTerritoire","conscienceCitoyennePlanetaire","interrogerSocioHistorique","interpreterSocioHistorique","conscienceCitoyenneHistoire","histoireQuebecCanada","interpreterSociete"],
+["lectureAvecQuestions","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lectureAHauteVoix","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lectureRomanEtResumer","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lecturePartageeAvecQuestions","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lireActualiteEtDiscuter","x","","x","","x","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["confectionLivreGeantAvecLecture","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["methodeLecture","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lectureDeRecherche","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["clubDeLecture","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lireChansonEtChanter","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lectureAUnPlusJeune","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["correspondance","x","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["strategiesDeLecture","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["enregistrerLectureAlbum","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["livreAudio","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["jouerTheatre","x","x","x","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["recitalPoesie","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["dessinDUneHistoireLue","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lecturebanqueDeMots","x","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["journalDuLecteur","","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["lectureVieDeTousLesJours","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["recetteLue","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["jeuxlectureEtComprehension","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["magazineEducatifEtActivites","x","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireConteAlbum","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireRecit3Temps","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireRecit5Temps","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireSemblant","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireRoman","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireSuiteHistoire","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireJournalIntime","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireRecette","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireUnAbecedaire","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireDictio","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireChanson","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireBD","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireTheatre","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["projetRecherche","x","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["utilisationOutilAutocorrection","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["utilisationDictio","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["utilisationGuideConjugaison","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["utilisationGrammaire","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireDictee","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["exerciceGrammaire","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireQuestionsPourEntrevue","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecritureLibre","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["fabriquerJeuxSocieteEtRegle","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecritureCollaborative","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireListes","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireReve","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireBlogue","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireFilmOuDocumentaire","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireMarcheASuivreOuFonctionnement","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["decrireinventionImaginaire","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["ecrireAUnAuteur","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["powerpoint","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["enregistrerBulletinNouvelle","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["oralRecherchePowerpoint","","","","x","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["podcast","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["debat","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["discussion","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["expliquerJeu","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["realiserEntrevue","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["raconterReve","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["realiserFilm","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["improvisation","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["raconterDesHistoires","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcouterChansonEtEnDiscuter","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angChantEtGestes","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angTransformationHistoire","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRepetitionMots","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angTeleEtQuestion","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angPoserQuestionsApresLecture","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRedireDansSesMots","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angMimerHistoireEntendue","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLectureDeCompte","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angDessinDeTexteEntendu","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angChansonEnJouant","","","","","","","x","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRaconter","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angUniquementAuRepas","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angDescriptions","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angDemanderAideOuPermission","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angVieCourante","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angOrdi","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angJeuxQuestionsReponse","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angJeuxSociete","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angEnregistrerBulletinNouvelle","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRecitalPoesie","","","","","","","","x","x","x","x","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angJouerTheatre","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angoralRecherchePowerpoint","","","","","","","","x","x","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angPodcast","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angDebat","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angDiscussion","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angExpliquerJeu","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRealiserEntrevue","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRaconterReve","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRealiserFilm","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angImprovisation","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRaconterDesHistoires","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","","","",""],
+["anglectureAvecQuestions","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLectureAHauteVoix","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLectureRomanEtResumer","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["anglecturePartageeAvecQuestions","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLireActualiteEtDiscuter","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLectureDeRecherche","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angClubDeLecture","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLireChansonEtChanter","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLectureAUnPlusJeune","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angCorrespondance","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angenregistrerLectureAlbum","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLivreAudio","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angDessinDUneHistoireLue","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angLecturebanqueDeMots","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angJournalDuLecteur","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["anglectureVieDeTousLesJours","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angRecetteLue","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angJeuxlectureEtComprehension","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angMagazineEducatifEtActivites","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireConteAlbum","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["EangcrireRoman","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireSuiteHistoire","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireJournalIntime","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireRecette","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireUnAbecedaire","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireDictio","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireChanson","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireBD","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireTheatre","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angProjetRecherche","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angUtilisationOutilAutocorrection","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angUtilisationDictio","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angUtilisationGuideConjugaison","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angUtilisationGrammaire","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireDictee","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angExerciceGrammaire","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireQuestionsPourEntrevue","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcritureLibre","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angFabriquerJeuxSocieteEtRegle","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcritureCollaborative","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireListes","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireReve","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireBlogue","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireFilmOuDocumentaire","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireMarcheASuivreOuFonctionnement","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angDecrireinventionImaginaire","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angEcrireAUnAuteur","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["angPowerpoint","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","","","","","","","",""],
+["mathProblemeEcrit","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["mathProblemeAnime","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["situationApprentissageEtEvaluation","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["projetReno","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["fabricationAvecMesure","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["questionnerRaisonnementMath","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["discuterSolutionsPossibles","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["elaborerRealisation","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["mathVaria","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["bricolageGeometrieMesure","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["planJardin","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["calculsEvenements","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["dessinFonctionMathematiques","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["dessinPlanMaisonPerimetreAire","","","","","","","","","","","","","","x","","","x","","","","","","","","","","","","","","","","","",""],
+["materiauxCoutsNouvelleChambre","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["budgetAnimal","","","","","","","","","","","","","","x","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathExercices","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathEnseignement","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathManipulation","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["multiplierRecette","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathLexique","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathResumer","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathDeterminerOperationReponse","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathRepresenterParDessin","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["diagrammeSondage","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathCodage","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathMaquette","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathJeux","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["mathDeco","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","","","","",""],
+["experienceScience1erCycle","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["maquetteTerreLune","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["desinEau","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["fairePainBeurre","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["faireJeuQuesionReponse","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["jardinage","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","","","","",""],
+["bricolageAnimal","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["theatreombre","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["calendrierMeteo","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["cuisiner","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["jeuxClassification","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["jeuxScienceEducatifs","","","","","","","","","","","","","","","","","","x","","","","","x","","","","","","","","","","","",""],
+["experienceAutresCycles","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["rapportExperience","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["faireMachineSimple","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["fairePlaneur","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["pontSolideTourHaute","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["programmationOuRobotique","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["maquetteAvecOutils","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["microscopeInsectes","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["fairePrototypeEtVerification","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["recetteDemonstrationChangementChimique","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["faireCircuitElectrique","","","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","",""],
+["sciTechNommerConnaissance","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechDiscussions","","","","","x","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechRemueMeninges","","","","","x","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechLectureEtQuestions","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechProjetRecherche","","","","x","","","","","","","","","","","","","","x","","","x","x","x","","","","","","","","","","","",""],
+["sciTechPowerPoint","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechQuestionnaire","","","","x","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechDocumentaireEtResume","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["schemaPhenomeneNaturel","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechPreparerDocumentaire","","","","x","x","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechDessinConcept","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechJeuxSociete","","","","","x","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechAnalyseActualite","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechReseauDeConcept","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["sciTechMaquette","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["dessinCircuit","","","","","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["resumerObservationsNature","","","","x","","","","","","","","","","","","","","","","","x","x","x","","","","","","","","","","","",""],
+["dessinIciEtAilleurs","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["dessinNatureVsHumain","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["correspondanceAvecPaysageEtPhoto","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["correspondanceRealiteIcIetAilleurs","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["ligneDuTempsRecent","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["arbreGenealogique","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["histoireDeFamille","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["dessinFamilleElargie","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["discussionSocial1erCycle","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["participationSociale","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["regleDeFonctionnementSocial","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["maquetteElementsHumains","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["utiliserCalendrier","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["calculNombreJoursAvantEvenement","","","","","","","","","","","","","","x","x","","x","","","","","","","x","","","","","","","","","","",""],
+["planCartierSimple","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["dessinEntourageAvecCaracteristiques","","","","","","","","","","","","","","","","","","","","","","","","x","","","","","","","","","","",""],
+["universSocialNommerConnaissance","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["maquetteSociete","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["faireCarteGeographique","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialNapperonSynthese","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialResumeLivre","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialLectureQuestion","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["bdHistorique","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["powerPointSociete","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialJeuQuestionnaire","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialSchemaConceptuel","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialVoirDocumentaire","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["ligneDuTemps","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialEcrireTexteInformatif","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialPieceTheatre","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialTextePersonneEpoque","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["reportageEnjeuTerritoire","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialTableauEnjeux","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["ecrireAuxDirigeants","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["ecrireBiographiePersonnagehistorique","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["resumeJournalAutreEpoque","","","","","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","x"],
+["universSocialRecherche","x","","x","x","x","x","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","","x"],
+["lireMagazineScientifique","x","","","","","","","","","","","","","","","","","x","x","","","","","","","","","","","","","","","",""],
+["lireMagazineUniversSocial","x","","x","","","","","","","","","","","","","","","","","","","","","x","x","x","x","x","x","x","x","x","x","","x"],
+
+
+];
+var cycles = [[1,"1er cycle du primaire (6 ou 7 ans au 1er juillet de l'année scolaire en cours)"], [2, "2e cycle du primaire (8 ou 9 ans au 1er juillet de l'année scolaire en cours)"], [3, "3e cycle du primaire (10 ou 11 ans au 1er juillet de l'année scolaire en cours)"], [4, "1er cycle du secondaire (12 ou 13 ans au 1er juillet de l'année scolaire en cours)"], [5, "2e cycle du secondaire (14 ou 15 ans au 1er juillet de l'année scolaire en cours)"]];
+</script>
+<head>
+<meta charset="UTF-8">
+<title>Activités et Compétences: Traducteur langage école-maison à langage DEM</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	margin-top: 1rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	background-color: #dedede;
+}
+
+.instructions {
+	font-size: 0.85rem;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+#result {
+	width: 100%;
+	border: 3px solid black;
+	border-radius: 15px;
+	padding: 10px;
+	white-space: pre-wrap;
+	margin-top: 10px;
+	background-color: white;
+	min-height: 3rem;
+}
+
+.activitySatisfyingCompetency {
+	color: blue;
+}
+
+.links {
+	margin-left: 2rem;
+	margin-top: 2px;
+}
+
+.boldLabel {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#right input + span {
+	background-color: #e0e000;
+	font-weight: bold;
+}
+
+#right input:checked + span {
+	font-weight: bold;
+	background-color: palegreen;
+}
+
+.halfWidth {
+	width: 50%;
+}
+
+.hidden {
+	display:none;
+}
+
+#left .A__, #right .C__ {
+	margin-left: 20px;
+}
+
+#left .A__ > label, #right .C__ > label {
+	margin-left: -20px;
+	font-weight: bold;
+}
+
+[data-linkid]::before {
+	content: '- ';
+}
+
+#toBottom {
+  top: 20px;
+}
+
+#toTop {
+  bottom: 20px;
+}
+
+.goTo {
+  display: block;
+  position: fixed;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: lightblue;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+#title {
+	color: #eeeeee;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 20px;
+}
+
+#copyButton {
+	background-color: #eeeeee;
+	border: 2px outset blue;
+	border-radius: 20px;
+	font-size: 15px;
+}
+
+#copyButton:hover {
+	font-size: 17px;
+}
+
+#copyButton:active {
+	background-color: #bbbbbb;
+	color: #eeeeee;
+}
+
+* {
+	font-size: 17px;
+}
+
+</style>
+</head>
+<body>
+<div width="100%" style="text-align: center;"><h2 id="title">Activités et Compétences: Traducteur "langage école-maison" à "langage DEM"</h2></div>
+<div class="instructions">L'idée est de cocher toutes les activités faites ou prévues dans la liste de gauche et de voir si elles couvrent toutes les compétences prévues au cycle dans la liste de droite, puis de voir, pour les compétences manquantes, des exemples d'activités qui pourraient les couvrir.</div>
+<div><i class="instructions">Note: Les listes d'activités et de compétences ne sont pas nécessairement exhaustives.</i></div>
+<label class="boldLabel">Choisir un cycle: <select id="cycle" onchange="populateByCycle(this.value)"><option id="noCycle" value=""></option></select></label>
+<div class="clearfix" style="position: relative">
+	<br>
+	<div class="halfWidth" style="float: right;"><span class="boldLabel">Compétences du PFEQ visées à ce cycle:</span><br>
+		<input type="search" id="filterCompetencies" class="hidden" placeholder="<recherche>" oninput="filterSide(competencyTag)">
+		<label id="showActivities" class="hidden"><input type="checkbox" checked onchange="showElements(activityTag)">Montrer les activités liées</label>
+		<div id="right" onclick="competencyActivityClick()"></div>
+	</div>
+	<div class="halfWidth"><span class="boldLabel">Activités:</span><br>
+		<input type="search" id="filterActivities" class="hidden" placeholder="<recherche>" oninput="filterSide(activityTag)">
+		<label id="showCompetencies" class="hidden"><input type="checkbox" checked onchange="showElements(competencyTag)">Montrer les compétences liées</label>
+		<div id="left" onchange="recalculateAttainedCompetencies()"></div>
+	</div>
+</div>
+<br>
+<div class="boldLabel">Résumé des sélections en texte: <button onclick='copyTextToClipboard(document.querySelector("#result").textContent)' id="copyButton">Copier le résumé vers le presse-papier</button></div>
+<div id="result" rows="10"></div>
+<div>Dernière modification: <span id="lastModDate"></span></div>
+<div>Nombre d'exemples d'activités à cette date: <span id="numActivities"></span>, Nombre de compétences: <span id="numCompetencies"></span></div>
+<button id="toBottom" class="goTo" onclick="toBottom()" title="Aller au bas de la page">&darr;</button>
+<button id="toTop" class="goTo" onclick="toTop()" title="Aller au haut de la page">&uarr;</button>
+</body>
+<script>
+var idIndex = 0;
+var titleIndex = 1;
+var sideCyclesIndex = 1;
+var linkCyclesIndex = 2;
+var rightSideLinkIndex = 1;
+var activityTag = "A__";
+var competencyTag = "C__";
+var sidesData = {};
+sidesData[activityTag] = activityList;
+sidesData[competencyTag] = competenceList;
+var currentCycleId;
+
+document.addEventListener('DOMContentLoaded', function() {
+	var cycleSelect = document.getElementById("cycle")	
+
+	for (var cycleIndex = 0; cycleIndex < cycles.length; ++cycleIndex) {
+		var cycle = cycles[cycleIndex];
+		var option = document.createElement("option");
+		option.value = cycle[idIndex];
+		option.innerHTML = cycle[titleIndex];
+		cycleSelect.appendChild(option);
+	}
+	
+	document.getElementById("lastModDate").textContent = new Date(document.lastModified).toString();
+	document.getElementById("numActivities").textContent = activityList.length;
+	document.getElementById("numCompetencies").textContent = competenceList.length;
+});
+
+function toTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function toBottom() {
+  document.body.scrollTop = document.body.scrollHeight;
+  document.documentElement.scrollTop = document.body.scrollHeight;
+}
+
+function addToArraySet(arraySet, content) {
+	if (arraySet.indexOf(content) === -1) {
+		arraySet.push(content);
+	}
+}
+
+function populateByCycle(cycleId) {
+	cycleId = +cycleId;
+	currentCycleId = cycleId;
+
+	var noCycle = document.getElementById("noCycle");
+	if(noCycle) noCycle.parentNode.removeChild(noCycle);
+	
+	var filterActivities = document.getElementById("filterActivities");
+	if(filterActivities){
+		filterActivities.classList.remove("hidden");
+		filterActivities.value = "";
+	}
+
+	var filterCompetencies = document.getElementById("filterCompetencies");
+	if(filterCompetencies) {
+		filterCompetencies.classList.remove("hidden");
+		filterCompetencies.value = "";
+	}
+
+	var showActivities = document.getElementById("showActivities");
+	if(showActivities) {
+		showActivities.classList.remove("hidden");
+		showActivities.firstChild.checked = true;
+	}
+	
+	var showCompetencies = document.getElementById("showCompetencies");
+	if(showCompetencies) {
+		showCompetencies.classList.remove("hidden");
+		showCompetencies.firstChild.checked = true;
+	}	
+	
+	var left = document.getElementById("left");
+	var right = document.getElementById("right");
+	//delete existing checkboxes
+	left.textContent = "";
+	right.textContent = "";
+	var resultElement = document.getElementById("result");
+	resultElement.value = "";
+	
+	buildCheckboxList(cycleId, left, activityList, activityTag);
+	buildCheckboxList(cycleId, right, competenceList, competencyTag);
+}
+
+function buildCheckboxList(cycleId, sideParentElement, checkboxList, sideTag) {
+	for (var checkboxIndex = 0; checkboxIndex < checkboxList.length; ++checkboxIndex) {
+		checkboxItem = checkboxList[checkboxIndex];
+		if(itemValidForCycle(checkboxItem, cycleId, sideCyclesIndex)) {
+			var checkbox = document.createElement("input");
+			checkbox.type = "checkbox";
+			checkbox.value = checkboxItem[idIndex];
+			if(sideTag === competencyTag) checkbox.disabled = true;
+			var label = document.createElement('label');
+			
+			label.appendChild(checkbox);
+			var span = document.createElement("span");
+			span.textContent = checkboxItem[titleIndex];
+			label.appendChild(span);
+			
+			var checkboxDiv = document.createElement("div");
+			checkboxDiv.className = sideTag + checkboxItem[idIndex] + " " + sideTag;
+			checkboxDiv.appendChild(label);
+			appendLinksToMainItem(checkboxDiv, checkboxItem[idIndex], sideTag, cycleId);
+			
+			sideParentElement.appendChild(checkboxDiv);
+		}
+	}
+}
+
+function cyclesOfLinkOkForCycle(activityRow, competencyColumn, cycleId) {
+	var cyclesOfLink = linksActivityToCompetencies[activityRow][competencyColumn];
+	return cyclesOfLink && (cyclesOfLink.trim().toLowerCase() == "x" || cyclesOfLink.indexOf(cycleId) > -1);
+}
+
+function getLinkedIds(id, sideTag, cycleId) {
+	var linkedIds = [];
+	
+	if (sideTag === activityTag) {
+		//the id is from an activity, find all competency line cells that match
+		for (var activityRow = 1; activityRow < linksActivityToCompetencies.length; ++activityRow) {
+			if(linksActivityToCompetencies[activityRow][0] == id) {
+				//we are on a row representing that activity
+				for (var competencyColumn = 1; competencyColumn < linksActivityToCompetencies[0].length; ++competencyColumn) {
+					if(cyclesOfLinkOkForCycle(activityRow, competencyColumn, cycleId)) linkedIds.push(linksActivityToCompetencies[0][competencyColumn]);
+				}
+			}
+		}
+	} else {
+		//the id is of a competency, find all the activities that match in that row
+		for (var competencyColumn = 1; competencyColumn < linksActivityToCompetencies[0].length; ++competencyColumn) {
+			if(linksActivityToCompetencies[0][competencyColumn] == id) {
+				//we are on a column representing that competency
+				for (var activityRow = 1; activityRow < linksActivityToCompetencies.length; ++activityRow) {
+					if(cyclesOfLinkOkForCycle(activityRow, competencyColumn, cycleId)) linkedIds.push(linksActivityToCompetencies[activityRow][0]);
+				}
+			}
+		}
+	}
+	
+	return linkedIds;
+}
+
+function appendLinksToMainItem(checkboxDiv, ietmId, sideTag, cycleId) {
+	var linkedIds = getLinkedIds(ietmId, sideTag, cycleId);
+	
+	if(linkedIds && linkedIds.length) {
+		var linksDiv = document.createElement("div");
+		linksDiv.className = "links";
+		for (var linkIndex = 0; linkIndex < linkedIds.length; ++linkIndex) {			
+			var otherSideTag = sideTag == activityTag ? competencyTag : activityTag;
+			
+			if(itemValidForCycle(getSideItem(linkedIds[linkIndex], otherSideTag), cycleId, sideCyclesIndex)) {
+				var linkDiv = document.createElement("div");				
+				linkDiv.textContent = getSideTitle(linkedIds[linkIndex], otherSideTag);
+				linkDiv.className = otherSideTag + linkedIds[linkIndex] + " " + otherSideTag;
+				linkDiv.setAttribute("data-linkid", linkedIds[linkIndex]);
+				linksDiv.appendChild(linkDiv);			
+			}
+		}
+		
+		checkboxDiv.appendChild(linksDiv);
+	}
+}
+
+function getSideItem(id, sideTag){
+	var itemList = sidesData[sideTag];
+	
+	for (var itemIndex = 0; itemIndex < itemList.length; ++itemIndex) {
+		if(itemList[itemIndex][idIndex] == id) return itemList[itemIndex];
+	}
+	
+	return null;
+}
+
+function getSideTitle(id, sideTag){
+	var sideItem = getSideItem(id, sideTag);
+	
+	return sideItem ? sideItem[titleIndex]: "";
+}
+
+function itemValidForCycle(item, cycle, indexOfCycle) {
+	return item && Boolean(item[indexOfCycle + cycle]);
+}
+
+function recalculateAttainedCompetencies() {
+	var listOfCompetenciesToMarkAsChecked = [];
+	var resultElement = document.getElementById("result");
+	resultElement.value = "";
+	var newResult = "";
+	
+	//clear activitySatisfyingCompetency class
+	var activitySatisfyingCompetencyElements = document.querySelectorAll(".activitySatisfyingCompetency");
+	
+	for (var activitySatisfyingCompetencyIndex = 0; activitySatisfyingCompetencyIndex < activitySatisfyingCompetencyElements.length; ++activitySatisfyingCompetencyIndex) {
+		activitySatisfyingCompetencyElements[activitySatisfyingCompetencyIndex].className = activitySatisfyingCompetencyElements[activitySatisfyingCompetencyIndex].className.replace(/ *activitySatisfyingCompetency */g, "");
+	}
+	
+	//determine linked right, add activitySatisfyingCompetency
+	var selectedActivitiesElements = document.querySelectorAll("#left input:checked");
+	for (var activityCheckboxIndex = 0; activityCheckboxIndex < selectedActivitiesElements.length; ++activityCheckboxIndex) {
+		var activityId = selectedActivitiesElements[activityCheckboxIndex].value;
+		var linkedCompetenciesIds = getLinkedIds(activityId, activityTag, currentCycleId);
+		
+		if (linkedCompetenciesIds){
+			for (var competencyIndex = 0; competencyIndex < linkedCompetenciesIds.length; ++competencyIndex) {
+				addToArraySet(listOfCompetenciesToMarkAsChecked, linkedCompetenciesIds[competencyIndex]);
+			}
+		}
+		
+		var newActivitySatisfyingCompetencyElements = document.querySelectorAll("#right ." + activityTag + activityId);
+		
+		for (var newactivitySatisfyingCompetencyIndex = 0; newactivitySatisfyingCompetencyIndex < newActivitySatisfyingCompetencyElements.length; ++newactivitySatisfyingCompetencyIndex) {
+			newActivitySatisfyingCompetencyElements[newactivitySatisfyingCompetencyIndex].className += " activitySatisfyingCompetency";
+		}
+	}
+	
+	//check the linked right items and build result as text
+	var competenceElements = document.querySelectorAll("#right input");
+	var previousSubject = "";
+	var subjectLabelRegex = /^(.+) - (.+)$/;
+	for (var competencyIndex = 0; competencyIndex < competenceElements.length; ++competencyIndex) {
+		var competencyThatIsAttainedElement = listOfCompetenciesToMarkAsChecked.indexOf(competenceElements[competencyIndex].value) > -1
+		competenceElements[competencyIndex].checked = competencyThatIsAttainedElement;
+		
+		if(competencyThatIsAttainedElement) {
+			var competencyText = getSideTitle(competenceElements[competencyIndex].value, competencyTag);
+			var competencyTextArray = subjectLabelRegex.exec(competencyText);
+			var competencySubject = competencyTextArray[1];
+			var competencyLabel = competencyTextArray[2];
+			
+			if(competencySubject != previousSubject) {
+				newResult += competencySubject + "\n";
+			}
+
+			newResult += "  > " + competencyLabel + "\n";
+			
+			var attainedByLeft = document.querySelectorAll("#right ." + competencyTag + competenceElements[competencyIndex].value + " .links .activitySatisfyingCompetency");
+			for (var byLeftIndex = 0; byLeftIndex < attainedByLeft.length; ++byLeftIndex) {
+				var leftLinkId = attainedByLeft[byLeftIndex].getAttribute("data-linkid");
+				newResult += "    - " + getSideTitle(leftLinkId, activityTag) + "\n";
+			}
+			
+			newResult += "\n";
+			
+			previousSubject = competencySubject;
+		}
+	}
+	
+	resultElement.textContent = newResult;
+}
+
+function filterSide(sideTag) {
+	var showActivities = document.getElementById("showActivities");
+	if(showActivities) showActivities.firstChild.checked = true;
+	
+	var showCompetencies = document.getElementById("showCompetencies");
+	if(showCompetencies) showCompetencies.firstChild.checked = true;
+	
+	var sideElements = document.querySelectorAll("." + sideTag);
+	
+	for (var sideIndex = 0; sideIndex < sideElements.length; ++sideIndex) {
+		var element = sideElements[sideIndex];
+		if(makeComparable(element.firstChild.textContent).indexOf(makeComparable(event.target.value)) > -1) {
+			element.classList.remove("hidden");
+		} else {
+			element.classList.add("hidden");
+		}
+	}
+}
+
+function makeComparable(aString) {
+	return aString.toLowerCase().replace(/[éêë]/g, "e").replace(/à/g, "a").replace(/û/g, "u");
+}
+
+function showElements(sideTag) {
+	var sideElements = document.querySelectorAll((sideTag == activityTag ? "#right" : "#left") + " ." + sideTag);
+	
+	for (var sideIndex = 0; sideIndex < sideElements.length; ++sideIndex) {
+		var element = sideElements[sideIndex];
+		
+		if(event.target.checked) {
+			element.classList.remove("hidden");
+		} else {
+			element.classList.add("hidden");
+		}
+	}
+}
+
+function competencyActivityClick() {
+	var elementClicked = event.target;
+	
+	if(elementClicked.classList.contains(activityTag)) {		
+		var correspondingCheckBox = document.querySelector("#left input[value=" + elementClicked.getAttribute("data-linkid") + "]");
+		correspondingCheckBox.checked = !correspondingCheckBox.checked;
+		recalculateAttainedCompetencies();
+	}
+}
+
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    document.execCommand('copy');
+  } catch (err) {    
+  }
+
+  document.body.removeChild(textArea);
+}
+
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text);
+}
+
+</script>
+</html>
